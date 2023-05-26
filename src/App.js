@@ -10,6 +10,8 @@ import Logout from "./pages/Logout";
 import { useContext } from "react";
 import { AuthContext } from "./context/UserContext";
 import Error404 from "./pages/Error404";
+import Masonry from "./pages/Masonry";
+import CarouselPage from "./pages/CarouselPage";
 
 const Privateroute = () => {
   const auth = localStorage.getItem("token");
@@ -25,6 +27,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route element={<Privateroute />}>
           <Route path="/home" element={<Home />} />
+          <Route path="/masonry" element={<Masonry />} />
+          <Route path="/carousel" element={<CarouselPage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/logout" element={<Logout />} />
         </Route>

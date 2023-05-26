@@ -8,12 +8,14 @@ import Modal from "../components/Modal";
 import { AiFillPlusCircle } from "react-icons/ai";
 import TextBox from "../components/TextBox";
 import { useNavigate } from "react-router";
+import Carousel from "../components/Carousel";
 
-const Home = () => {
+const CarouselPage = () => {
   const [photos, setPhotos] = useState([]);
   const [updateUI, setUpdateUI] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [caption, setCaption] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
 
   const navigate = useNavigate();
 
@@ -58,6 +60,18 @@ const Home = () => {
 
   let token = localStorage.getItem("token");
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Set the breakpoint as per your requirement
+    };
+
+    handleResize(); // Set the initial state based on the current window width
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  useEffect(() => {
     Axios.get("http://localhost:3001/api/photos/", {
       headers: {
         authorization: token,
@@ -72,10 +86,20 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="pt-24">
-        <Grid photos={photos} />
-        {/* <Button setUpdateUI={setUpdateUI} /> */}
+      {!isMobile && <Navbar />}
+      <div className="flex flex-col items-center">
+        <div className="sm:w-[308px] sm:my-auto sm:pt-20">
+          <Carousel autoSlide={true} autoSlideInterval={1000}>
+            {photos.map(({ caption, photo, _id }) => (
+              //   <div>
+              <img
+                key={_id}
+                src={`http://localhost:3001/uploads/${photo}`}
+                alt="alt"
+              />
+            ))}
+          </Carousel>
+        </div>
         <button
           className="fixed right-0 bottom-0 m-8 text-md shadow-none"
           onClick={handleOpenModal}
@@ -122,4 +146,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default CarouselPage;

@@ -28,19 +28,19 @@ const Navbar = () => {
             {/* <Link href='/' className='invisible ml-10 text-md font-bold uppercase'>
                         Home
                     </Link> */}
-            <a href="/">
+            <a href="/home">
               <li className="font-bold ml-10 text-md uppercase hover:border-b cursor-pointer">
                 Home
               </li>
             </a>
-            <a href="/">
+            <a href="/masonry">
               <li className="font-bold ml-10 text-md uppercase hover:border-b cursor-pointer">
-                About
+                Masonry
               </li>
             </a>
-            <a href="/">
+            <a href="/carousel">
               <li className="font-bold ml-10 text-md uppercase hover:border-b cursor-pointer">
-                Skills
+                Carousel
               </li>
             </a>
             <a href="/">
@@ -87,14 +87,14 @@ const Navbar = () => {
           </div>
           <div>
             <ul className="uppercase font-bold">
-              <a href="/">
+              <a href="/home">
                 <li className="py-4 text-md cursor-pointer">Home</li>
               </a>
-              <a href="/">
-                <li className="py-4 text-md cursor-pointer">About</li>
+              <a href="/masonry">
+                <li className="py-4 text-md cursor-pointer">Masonry</li>
               </a>
-              <a href="/">
-                <li className="py-4 text-md cursor-pointer">Skills</li>
+              <a href="/carousel">
+                <li className="py-4 text-md cursor-pointer">Carousel</li>
               </a>
               <a href="/">
                 <li className="py-4 text-md cursor-pointer">Projects</li>

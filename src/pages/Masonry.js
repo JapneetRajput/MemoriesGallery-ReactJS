@@ -9,7 +9,7 @@ import { AiFillPlusCircle } from "react-icons/ai";
 import TextBox from "../components/TextBox";
 import { useNavigate } from "react-router";
 
-const Home = () => {
+const Masonry = () => {
   const [photos, setPhotos] = useState([]);
   const [updateUI, setUpdateUI] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +43,7 @@ const Home = () => {
         console.log(res.data);
         setUpdateUI(res.data._id);
         setIsOpen(false);
-        navigate("/home");
+        navigate("/masonry");
       })
       .catch((err) => console.log(err));
   };
@@ -74,7 +74,17 @@ const Home = () => {
     <>
       <Navbar />
       <div className="pt-24">
-        <Grid photos={photos} />
+        {/* <Grid photos={photos} /> */}
+        <div className="colums-4 gap-3 w-[1200px] mx-auto space-y-3 pb-28">
+          {photos.map(({ caption, photo, _id }) => (
+            <div className="bg-gray-200 break-inside-avoid" key={_id}>
+              <img
+                src={`http://localhost:3001/uploads/${photo}`}
+                alt="grid_image"
+              ></img>
+            </div>
+          ))}
+        </div>
         {/* <Button setUpdateUI={setUpdateUI} /> */}
         <button
           className="fixed right-0 bottom-0 m-8 text-md shadow-none"
@@ -122,4 +132,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Masonry;
