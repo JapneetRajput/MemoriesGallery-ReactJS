@@ -82,10 +82,7 @@ const Masonry = () => {
         <div className="colums-4 gap-3 w-[1200px] mx-auto space-y-3 pb-28">
           {photos.map(({ caption, photo, _id }) => (
             <div className="bg-gray-200 break-inside-avoid" key={_id}>
-              <img
-                src={process.env.REACT_APP_API_BASE_URL + `/uploads/${photo}`}
-                alt="grid_image"
-              ></img>
+              <img src={`${photo}`} alt="grid_image"></img>
             </div>
           ))}
         </div>

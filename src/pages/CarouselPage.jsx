@@ -96,11 +96,7 @@ const CarouselPage = () => {
           <Carousel autoSlide={true} autoSlideInterval={1000}>
             {photos.map(({ caption, photo, _id }) => (
               //   <div>
-              <img
-                key={_id}
-                src={process.env.REACT_APP_API_BASE_URL + `/uploads/${photo}`}
-                alt="alt"
-              />
+              <img key={_id} src={`${photo}`} alt="alt" />
             ))}
           </Carousel>
         </div>
