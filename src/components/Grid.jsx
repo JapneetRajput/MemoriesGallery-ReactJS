@@ -8,7 +8,7 @@ const Grid = ({ photos }) => {
         {photos.map(({ caption, photo, _id }) => (
           <div className="max-w-sm rounded overflow-hidden shadow-lg">
             <img
-              src={`http://localhost:3001/uploads/${photo}`}
+              src={process.env.REACT_APP_API_BASE_URL + `/uploads/${photo}`}
               alt=""
               className="w-full"
             />

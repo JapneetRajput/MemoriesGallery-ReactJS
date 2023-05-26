@@ -40,7 +40,11 @@ const CarouselPage = () => {
         "Content-Type": "multipart/form-data", // Set the content type to multipart/form-data
       },
     };
-    Axios.post("http://localhost:3001/api/photos/save", formData, config)
+    Axios.post(
+      process.env.REACT_APP_API_BASE_URL + "/api/photos/save",
+      formData,
+      config
+    )
       .then((res) => {
         console.log(res.data);
         setUpdateUI(res.data._id);
@@ -72,7 +76,7 @@ const CarouselPage = () => {
     };
   }, []);
   useEffect(() => {
-    Axios.get("http://localhost:3001/api/photos/", {
+    Axios.get(process.env.REACT_APP_API_BASE_URL + "/api/photos/", {
       headers: {
         authorization: token,
       },
@@ -94,7 +98,7 @@ const CarouselPage = () => {
               //   <div>
               <img
                 key={_id}
-                src={`http://localhost:3001/uploads/${photo}`}
+                src={process.env.REACT_APP_API_BASE_URL + `/uploads/${photo}`}
                 alt="alt"
               />
             ))}
